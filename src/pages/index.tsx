@@ -24,6 +24,14 @@ const Home: React.FC = () => {
       setMessages((prevMessages) => [...prevMessages, data]);
     });
 
+    // Broadcast entry messages to all connected clients
+    newSocket.on("user entered", (user: string) => {
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { username: "System", message: `${user} entered the chat.` },
+      ]);
+    });
+
     // Clean up the socket when the component unmounts
     return () => {
       newSocket.disconnect();

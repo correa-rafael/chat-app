@@ -28,6 +28,11 @@ io.on('connection', (socket) => {
   // Send a welcome message to the client upon connection
   socket.emit('message', 'Welcome to the chat!');
 
+  // Broadcast entry message to all connected clients
+  socket.on('user entered', (user: string) => {
+    io.emit('user entered', user);
+  });
+
   // Handle messages received from the client
   socket.on('chat message', (data) => {
     console.log(`message: ${data.message}, username: ${data.username}`);
