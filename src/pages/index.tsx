@@ -70,9 +70,24 @@ const Home: React.FC = () => {
         <div className="bg-white p-4 rounded-lg shadow-md">
           <ul className="space-y-2">
             {messages.map((msg, index) => (
-              <li key={index} className="flex items-start">
-                <div className="bg-gray-200 p-2 rounded">
-                  {msg.username && <strong>{msg.username}:</strong>}{" "}
+              <li
+                key={index}
+                className={`flex ${
+                  msg.username === username ? "justify-end" : "justify-start"
+                }`}
+              >
+                <div
+                  className={`p-2 rounded ${
+                    msg.username === username
+                      ? "bg-green-500 text-white"
+                      : "bg-gray-200"
+                  } whitespace-pre-wrap`}
+                >
+                  {msg.username ? (
+                    <strong>{msg.username}:</strong>
+                  ) : (
+                    <span className="italic">System:</span>
+                  )}{" "}
                   {msg.message}
                 </div>
               </li>
