@@ -6,17 +6,22 @@ import Layout from "../styles/layout";
 import "../styles/globals.css";
 
 const Home: React.FC = () => {
-  const [messages, setMessages] = useState<string[]>([]);
+  const [messages, setMessages] = useState<any[]>([]);
   const [inputMessage, setInputMessage] = useState<string>("");
   const [socket, setSocket] = useState<Socket | null>(null);
+  const [username, setUsername] = useState<string | null>(null);
 
   useEffect(() => {
     const newSocket = io("http://localhost:4000");
     setSocket(newSocket);
 
+    // Prompt user for a username
+    const user = prompt("Enter your username:");
+    setUsername(user);
+
     // Add an event to handle messages received from the server
-    newSocket.on("chat message", (msg: string) => {
-      setMessages((prevMessages) => [...prevMessages, msg]);
+    newSocket.on("chat message", (data: any) => {
+      setMessages((prevMessages) => [...prevMessages, data]);
     });
 
     // Clean up the socket when the component unmounts
@@ -27,7 +32,7 @@ const Home: React.FC = () => {
 
   const handleSendMessage = () => {
     if (socket) {
-      socket.emit("chat message", inputMessage);
+      socket.emit("chat message", { message: inputMessage, username });
       setInputMessage("");
     }
   };
@@ -42,7 +47,9 @@ const Home: React.FC = () => {
           <ul className="space-y-2">
             {messages.map((msg, index) => (
               <li key={index} className="flex items-start">
-                <div className="bg-gray-200 p-2 rounded">{msg}</div>
+                <div className="bg-gray-200 p-2 rounded">
+                  <strong>{msg.username}:</strong> {msg.message}
+                </div>
               </li>
             ))}
           </ul>

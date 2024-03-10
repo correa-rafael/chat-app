@@ -29,10 +29,10 @@ io.on('connection', (socket) => {
   socket.emit('message', 'Welcome to the chat!');
 
   // Handle messages received from the client
-  socket.on('chat message', (msg) => {
-    console.log(`message: ${msg}`);
+  socket.on('chat message', (data) => {
+    console.log(`message: ${data.message}, username: ${data.username}`);
     // Broadcast to all connected clients
-    io.emit('chat message', msg);
+    io.emit('chat message', data);
   });
 
   socket.on('disconnect', () => {
