@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { Socket } from "socket.io-client";
 import io from "socket.io-client";
+import Layout from "../styles/layout";
+import "../styles/globals.css";
 
 const Home: React.FC = () => {
   const [messages, setMessages] = useState<string[]>([]);
@@ -31,24 +33,39 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div>
-      <h1>Chat App</h1>
-      <div>
-        <ul>
-          {messages.map((msg, index) => (
-            <li key={index}>{msg}</li>
-          ))}
-        </ul>
+    <Layout>
+      <div className="p-4">
+        <div className="bg-blue-500 text-white p-2 mb-4 rounded-lg">
+          <h2 className="text-lg font-bold">Chat Room</h2>
+        </div>
+        <div className="bg-white p-4 rounded-lg shadow-md">
+          <ul className="space-y-2">
+            {messages.map((msg, index) => (
+              <li key={index} className="flex items-start">
+                <div className="bg-gray-200 p-2 rounded">{msg}</div>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="mt-4">
+          <div className="flex items-center space-x-2">
+            <input
+              type="text"
+              value={inputMessage}
+              onChange={(e) => setInputMessage(e.target.value)}
+              className="border p-2 flex-grow rounded"
+              placeholder="Type your message..."
+            />
+            <button
+              onClick={handleSendMessage}
+              className="bg-blue-500 text-white p-2 rounded"
+            >
+              Send
+            </button>
+          </div>
+        </div>
       </div>
-      <div>
-        <input
-          type="text"
-          value={inputMessage}
-          onChange={(e) => setInputMessage(e.target.value)}
-        />
-        <button onClick={handleSendMessage}>Send</button>
-      </div>
-    </div>
+    </Layout>
   );
 };
 
