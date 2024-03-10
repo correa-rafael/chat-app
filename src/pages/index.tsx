@@ -19,12 +19,12 @@ const Home: React.FC = () => {
     const user = prompt("Enter your username:");
     setUsername(user);
 
-    // Add an event to handle messages received from the server
+    // Add an event to handle messages
     newSocket.on("chat message", (data: any) => {
       setMessages((prevMessages) => [...prevMessages, data]);
     });
 
-    // Broadcast entry messages to all connected clients
+    // Add an event to handle user entry
     newSocket.on("user entered", (user: string) => {
       setMessages((prevMessages) => [
         ...prevMessages,
@@ -56,7 +56,10 @@ const Home: React.FC = () => {
             {messages.map((msg, index) => (
               <li key={index} className="flex items-start">
                 <div className="bg-gray-200 p-2 rounded">
-                  <strong>{msg.username}:</strong> {msg.message}
+                  {msg.username && (
+                    <strong className="text-blue-500">{msg.username}:</strong>
+                  )}{" "}
+                  {msg.message}
                 </div>
               </li>
             ))}
@@ -79,6 +82,11 @@ const Home: React.FC = () => {
             </button>
           </div>
         </div>
+        {username && (
+          <div className="mt-2 text-blue-500">
+            Welcome, <strong>{username}</strong>!
+          </div>
+        )}
       </div>
     </Layout>
   );
