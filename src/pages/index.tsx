@@ -85,9 +85,15 @@ const Home: React.FC = () => {
               type="text"
               value={inputMessage}
               onChange={(e) => setInputMessage(e.target.value)}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") {
+                  handleSendMessage();
+                }
+              }}
               className="border p-2 flex-grow rounded"
               placeholder="Type your message..."
             />
+
             <button
               onClick={handleSendMessage}
               className="bg-blue-500 text-white p-2 rounded"
