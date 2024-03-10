@@ -18,6 +18,8 @@ const PORT = process.env.PORT || 4000;
 // Enable CORS for the entire app
 app.use(cors());
 
+const users: { [socketId: string]: string } = {};
+
 app.get('/', (req, res) => {
   res.send('Server is running!');
 });
@@ -28,9 +30,11 @@ io.on('connection', (socket) => {
   // Send a welcome message to the client upon connection
   socket.emit('message', 'Welcome to the chat!');
 
-  // Broadcast entry message to all connected clients
-  socket.on('user entered', (user: string) => {
-    io.emit('user entered', user);
+  // Handle setting the username
+  socket.on('set username', (username: string) => {
+    users[socket.id] = username;
+    io.emit('user entered', username);
+    io.emit('users', Object.values(users));
   });
 
   // Handle messages received from the client
@@ -41,6 +45,10 @@ io.on('connection', (socket) => {
   });
 
   socket.on('disconnect', () => {
+    const username = users[socket.id];
+    delete users[socket.id];
+    io.emit('user left', username);
+    io.emit('users', Object.values(users));
     console.log('user disconnected');
   });
 });
