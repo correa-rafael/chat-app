@@ -83,7 +83,9 @@ const Home: React.FC = () => {
                   className={`p-2 rounded ${
                     msg.username === username
                       ? "bg-green-500 text-white"
-                      : "bg-gray-200"
+                      : msg.username
+                      ? "bg-gray-200"
+                      : "bg-blue-100 text-blue-800"
                   }`}
                   style={{ wordBreak: "break-word" }}
                 >
