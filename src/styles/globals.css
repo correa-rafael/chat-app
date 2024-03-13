@@ -3,3 +3,44 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+/* Reset margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Styles for the body */
+  body {
+    font-family: "Roboto", sans-serif; /* Choose an appropriate font */
+    background-color: #f7fafc; /* Default background color */
+  }
+  
+  /* Styles for links */
+  a {
+    color: #4a90e2; /* Default color for links */
+    text-decoration: none; /* Remove default underline */
+  }
+  
+  a:hover {
+    text-decoration: underline; /* Add underline on hover */
+  }
+  
+  /* Styles for buttons */
+  button {
+    cursor: pointer; /* Show pointer cursor on hover */
+  }
+  
+  /* Styles for inputs */
+  input, textarea {
+    border: 1px solid #cbd5e0; /* Default border */
+    border-radius: 0.25rem; /* Default border radius */
+    padding: 0.5rem; /* Default padding */
+  }
+  
+  textarea {
+    resize: vertical; /* Allow only vertical resizing */
+  }
+  
+  /* Other styles as needed */
+  
