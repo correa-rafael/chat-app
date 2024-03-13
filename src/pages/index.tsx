@@ -81,7 +81,8 @@ const Home: React.FC = () => {
                     msg.username === username
                       ? "bg-green-500 text-white"
                       : "bg-gray-200"
-                  } whitespace-pre-wrap`}
+                  }`}
+                  style={{ wordBreak: "break-word" }}
                 >
                   {msg.username ? (
                     <strong>{msg.username}:</strong>
