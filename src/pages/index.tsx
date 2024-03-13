@@ -1,4 +1,3 @@
-// src/app/pages/index.tsx
 import React, { useState, useEffect } from "react";
 import { Socket } from "socket.io-client";
 import io from "socket.io-client";
@@ -36,10 +35,12 @@ const Home: React.FC = () => {
 
     // Add an event to handle when a user leaves
     newSocket.on("user left", (user: string) => {
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { username: null, message: `${user} left the chat` },
-      ]);
+      if (user) {
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { username: null, message: `${user} left the chat` },
+        ]);
+      }
     });
 
     // Add an event to handle the updated list of users
@@ -54,7 +55,7 @@ const Home: React.FC = () => {
   }, []);
 
   const handleSendMessage = () => {
-    if (socket) {
+    if (socket && inputMessage.trim() !== "") {
       socket.emit("chat message", { message: inputMessage, username });
       setInputMessage("");
     }
@@ -68,54 +69,51 @@ const Home: React.FC = () => {
           <p className="text-sm">Users in the chat: {users.join(", ")}</p>
         </div>
         <div
-          className="bg-white p-4 rounded-lg shadow-md overflow-y-auto"
-          style={{ maxHeight: "400px" }}
+          className="bg-white p-4 rounded-lg shadow-md"
+          style={{ maxHeight: "60vh", overflowY: "auto" }}
         >
-          <ul className="space-y-2">
-            {messages.map((msg, index) => (
-              <li
-                key={index}
-                className={`flex ${
-                  msg.username === username ? "justify-end" : "justify-start"
-                }`}
-              >
-                <div
-                  className={`p-2 rounded ${
-                    msg.username === username
-                      ? "bg-green-500 text-white"
-                      : msg.username
-                      ? "bg-gray-200"
-                      : "bg-blue-100 text-blue-800"
-                  }`}
-                  style={{ wordBreak: "break-word" }}
-                >
-                  {msg.username ? (
-                    <strong>{msg.username}:</strong>
-                  ) : (
-                    <span className="italic">System:</span>
-                  )}{" "}
-                  {msg.message}
-                </div>
-              </li>
-            ))}
-          </ul>
+          {messages.map((msg, index) => (
+            <div
+              key={index}
+              className={`p-2 rounded ${
+                msg.username === username
+                  ? "bg-green-500 text-white"
+                  : msg.username === null
+                  ? "bg-blue-200 text-black" // Styling for "user entered the chat" messages
+                  : "bg-gray-200 text-black"
+              }`}
+              style={{
+                wordWrap: "break-word",
+                maxWidth: "fit-content",
+                alignSelf: "flex-start",
+                marginBottom: "0.5rem",
+                marginLeft: msg.username === username ? "auto" : "0", // Move mensagem do usuário ativo para a direita
+              }}
+            >
+              {msg.username && <strong>{msg.username}:</strong>}{" "}
+              {msg.message.includes("\n")
+                ? msg.message
+                    .split("\n")
+                    .map((line: string, i: number) => <div key={i}>{line}</div>)
+                : msg.message}
+            </div>
+          ))}
         </div>
-
         <div className="mt-4">
           <div className="flex items-center space-x-2">
-            <input
-              type="text"
+            <textarea
               value={inputMessage}
               onChange={(e) => setInputMessage(e.target.value)}
-              onKeyPress={(e) => {
-                if (e.key === "Enter") {
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && !e.shiftKey) {
+                  e.preventDefault();
                   handleSendMessage();
                 }
               }}
               className="border p-2 flex-grow rounded"
               placeholder="Type your message..."
+              style={{ resize: "none" }}
             />
-
             <button
               onClick={handleSendMessage}
               className="bg-blue-500 text-white p-2 rounded"
