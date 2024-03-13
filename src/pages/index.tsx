@@ -67,7 +67,10 @@ const Home: React.FC = () => {
           <h2 className="text-lg font-bold">Chat Room</h2>
           <p className="text-sm">Users in the chat: {users.join(", ")}</p>
         </div>
-        <div className="bg-white p-4 rounded-lg shadow-md">
+        <div
+          className="bg-white p-4 rounded-lg shadow-md overflow-y-auto"
+          style={{ maxHeight: "400px" }}
+        >
           <ul className="space-y-2">
             {messages.map((msg, index) => (
               <li
@@ -95,6 +98,7 @@ const Home: React.FC = () => {
             ))}
           </ul>
         </div>
+
         <div className="mt-4">
           <div className="flex items-center space-x-2">
             <input
