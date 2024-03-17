@@ -16,7 +16,7 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
   const token = authHeader && authHeader.split(' ')[1];
   if (!token) {
     return res.status(401).json({ message: 'Unauthorized' });
-  }
+  } 
   jwt.verify(token, 'your-secret-key', (err: any, user: any) => {
     if (err) {
       return res.status(403).json({ message: 'Forbidden' });
