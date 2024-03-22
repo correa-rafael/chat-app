@@ -12,7 +12,7 @@ const Home: React.FC = () => {
   const [users, setUsers] = useState<string[]>([]);
 
   useEffect(() => {
-    const newSocket = io("http://localhost:4000");
+    const newSocket = io("https://chatapp-server.adaptable.app/");
     setSocket(newSocket);
 
     // Prompt user for a username
