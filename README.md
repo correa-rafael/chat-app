@@ -24,6 +24,10 @@ ChatApp is a real-time chat application developed with Next.js and Express. It a
 
 The frontend of ChatApp is deployed on [Vercel](https://vercel.com/), providing a reliable and scalable hosting platform for web applications. The backend is deployed on a separate server implemented in the [chat-app-server](https://github.com/correa-rafael/chat-app-server) repository, ensuring efficient handling of server-side operations and maintaining the responsiveness of the chat application.
 
+## Example
+
+![ChatApp Example](example1.png)
+
 ## Installation
 
 To run ChatApp locally, follow these simple steps:
@@ -32,10 +36,6 @@ To run ChatApp locally, follow these simple steps:
 2. Navigate to the project directory.
 3. Install dependencies using `npm install`.
 4. Start the development server using `npm run dev`.
-
-## Example
-
-![ChatApp Example](example1.png)
 
 ## Usage
 
