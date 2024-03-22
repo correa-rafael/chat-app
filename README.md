@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ChatApp
 
-## Getting Started
+ChatApp is a real-time chat application developed with Socket.IO and React. It allows users to communicate instantly in public chat rooms.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Real-Time Chat:** Users can send and receive messages instantly in chat rooms.
+- **Custom Usernames:** Users can set their own usernames to identify themselves in the chat.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies Used
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Frontend:**
+  - [React](https://reactjs.org/): A JavaScript library for building user interfaces.
+  - [Next.js](https://nextjs.org/): React framework for building server-side rendered and statically generated web applications.
+  - [Tailwind CSS](https://tailwindcss.com/): Utility-first CSS framework for rapidly building custom designs.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Backend:**
+  - [Node.js](https://nodejs.org/): JavaScript runtime for building scalable server-side applications.
+  - [Express](https://expressjs.com/): Web application framework for Node.js for building APIs and web servers.
+  - [Socket.IO](https://socket.io/): Real-time bidirectional event-based communication library for web applications.
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+The frontend of the application is deployed on [Vercel](https://vercel.com/), and the backend is deployed on a separate server implemented in the [chat-app-server](https://github.com/your-username/chat-app-server) repository.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+To run the project locally, follow these steps:
 
-## Deploy on Vercel
+1. Clone this repository.
+2. Navigate to the project directory.
+3. Install dependencies using `npm install`.
+4. Start the development server using `npm run dev`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Usage
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Once the development server is running, visit `http://localhost:3000` in your web browser to access the chat application.
+
+## Contributing
+
+Contributions are welcome! Feel free to open a pull request or submit an issue if you have any suggestions or improvements.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
