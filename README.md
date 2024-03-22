@@ -19,7 +19,7 @@ ChatApp is a real-time chat application developed with Next.js and Express. It a
 - **Backend ([chat-app-server](https://github.com/correa-rafael/chat-app-server)):**
   - [Node.js](https://nodejs.org/): The server-side JavaScript runtime environment of choice for ChatApp's backend development, offering scalability and efficiency in handling server-side operations.
   - [Express](https://expressjs.com/): A flexible and minimalist web application framework for Node.js, Express simplifies the development of APIs and web servers, powering ChatApp's backend infrastructure.
-  - [Socket.IO](https://socket.io/): Facilitating real-time bidirectional event-based communication, Socket.IO enables seamless interaction between clients and servers in ChatApp, ensuring instant message delivery and updates.
+  - [Socket.IO](https://socket.io/): Facilitating real-time bidirectional event-based communication, Socket.IO enables seamless interaction between clients and server in ChatApp, ensuring instant message delivery and updates.
 
 ## Deployment
 
