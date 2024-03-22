@@ -35,7 +35,7 @@ To run ChatApp locally, follow these simple steps:
 
 ## Example
 
-![ChatApp Example](example.png)
+![ChatApp Example](example1.png)
 
 ## Usage
 
