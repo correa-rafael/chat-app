@@ -44,7 +44,3 @@ Once the development server is running, access ChatApp by visiting `http://local
 ## Contributing
 
 Contributions to ChatApp are always welcome! Whether it's through opening a pull request, submitting an issue, or providing feedback, your contributions help enhance and improve the application for all users.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE), allowing for free usage, modification, and distribution of ChatApp.
