@@ -12,6 +12,7 @@ const Home: React.FC = () => {
   const [users, setUsers] = useState<string[]>([]);
 
   useEffect(() => {
+    document.title = "ChatApp";
     const newSocket = io("https://chatapp-server.adaptable.app/");
     setSocket(newSocket);
 
