@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Head from "next/head"
 import { Socket } from "socket.io-client";
 import io from "socket.io-client";
 import Layout from "../styles/layout";
@@ -64,6 +65,10 @@ const Home: React.FC = () => {
 
   return (
     <Layout>
+      <Head>
+        <title>ChatApp - Real-time Chat Application</title>
+        <meta name="description" content="Join the conversation in ChatApp, a real-time chat application for instant communication in public chat rooms." /> 
+      </Head>
       <div className="p-4">
         <div className="bg-blue-500 text-white p-2 mb-4 rounded-lg">
           <h2 className="text-lg font-bold">Chat Room</h2>
