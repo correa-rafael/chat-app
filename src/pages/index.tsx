@@ -66,7 +66,7 @@ const Home: React.FC = () => {
   return (
     <Layout>
       <Head>
-        <title>ChatApp - Real-time Chat Application</title>
+        <title>ChatApp</title>
         <meta name="description" content="Join the conversation in ChatApp, a real-time chat application for instant communication in public chat rooms." /> 
       </Head>
       <div className="p-4">
