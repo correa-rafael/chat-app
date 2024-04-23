@@ -25,8 +25,6 @@ ChatApp is a real-time chat application developed with Next.js and Express. It a
 
 The frontend of ChatApp is deployed on [Vercel](https://chat-app-roan-rho.vercel.app/). The backend is deployed on a separate server implemented in the [chat-app-server](https://github.com/correa-rafael/chat-app-server) repository, ensuring efficient handling of server-side operations and maintaining the responsiveness of the chat application. 
 
-Both the frontend and backend components work together to provide a seamless user experience, with the frontend handling user interactions and the backend performing image processing and QR code detection tasks.
-
 ## Usage Example
 
 ![ChatApp Example](example1.png)
